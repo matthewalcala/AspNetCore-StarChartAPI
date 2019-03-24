@@ -130,9 +130,9 @@ namespace StarChartTests
                          select type).FirstOrDefault();
             Assert.True(model != null, "A `public` class `ApplicationDbContext` was not found in the `StarChart.Data` namespace.");
 
-            var property = context.GetProperty("CelestialObjects");
-            Assert.True(property != null, "A `public` property `CelestialObjects` was not found in the `ApplicationDbContext` class.");
-            Assert.True(property.PropertyType.AssemblyQualifiedName.Contains("DbSet") && property.PropertyType.AssemblyQualifiedName.Contains("CelestialObject"), "A `public` property `CelestialObjects` was found in `ApplicationDbContext`, but was not of type `DbSet<CelestialObject>`.");
+            var property = context.GetProperty("CelestialObject");
+            Assert.True(property != null, "A `public` property `CelestialObject` was not found in the `ApplicationDbContext` class.");
+            Assert.True(property.PropertyType.AssemblyQualifiedName.Contains("DbSet") && property.PropertyType.AssemblyQualifiedName.Contains("CelestialObject"), "A `public` property `CelestialObject` was found in `ApplicationDbContext`, but was not of type `DbSet<CelestialObject>`.");
         }
     }
 }

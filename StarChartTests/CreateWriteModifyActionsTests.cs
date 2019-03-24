@@ -50,7 +50,7 @@ namespace StarChartTests
             Assert.True(okResults.RouteValues.Count == 1 && okResults.RouteValues["id"] != null, "`CelestialObjectController`'s `Create` action's `CreateAtRoute`'s second argument didn't contain a RouteValue of `id`.");
             Assert.True(okResults.Value.GetType() == model, "`CelestialObjectController`'s `Create` action's `CreatedAtRoute`'s third argument didn't contain the newly created `CelestialObject`.");
             var results = context.Find(model, 1);
-            Assert.True(model.GetProperty("Name").GetValue(results) == model.GetProperty("Name").GetValue(item), "`CelestialObjectController`'s `Create` action did not add the provided `CelestialObject` to `_context.CelestialObjects` (Don't forget to call `SaveChanges` after adding it!).");
+            Assert.True(model.GetProperty("Name").GetValue(results) == model.GetProperty("Name").GetValue(item), "`CelestialObjectController`'s `Create` action did not add the provided `CelestialObject` to `_context.CelestialObject` (Don't forget to call `SaveChanges` after adding it!).");
         }
 
         [Fact(DisplayName = "Create Update Action @create-update-action")]
@@ -101,7 +101,7 @@ namespace StarChartTests
             var okResults = method.Invoke(celestialController, new object[] { 1, replacement }) as NoContentResult;
             Assert.True(okResults != null, "`CelestialObjectController`'s `Update` action did not return a `NoContent` result.");
             var results = context.Find(model, 1);
-            Assert.True(model.GetProperty("Name").GetValue(results) == model.GetProperty("Name").GetValue(replacement), "`CelestialObjectController`'s `Update` action did not update the matching `CelestialObject` in `_context.CelestialObjects` with the `CelestialObject` provided in the parameter (Don't forget to call `SaveChanges` after updating it!).");
+            Assert.True(model.GetProperty("Name").GetValue(results) == model.GetProperty("Name").GetValue(replacement), "`CelestialObjectController`'s `Update` action did not update the matching `CelestialObject` in `_context.CelestialObject` with the `CelestialObject` provided in the parameter (Don't forget to call `SaveChanges` after updating it!).");
         }
 
         [Fact(DisplayName = "Create RenameObject Action @create-renameobject-action")]
@@ -148,7 +148,7 @@ namespace StarChartTests
             var okResults = method.Invoke(celestialController, new object[] { 1, "Sol" }) as NoContentResult;
             Assert.True(okResults != null, "`CelestialObjectController`'s `RenameObject` action did not return a `NoContent` result.");
             var results = context.Find(model, 1);
-            Assert.True(model.GetProperty("Name").GetValue(results).ToString() == "Sol", "`CelestialObjectController`'s `RenameObject` action did not update the `Name` property of the matching `CelestialObject` in `_context.CelestialObjects` with the `string` provided in the parameter (Don't forget to call `SaveChanges` after updating it!).");
+            Assert.True(model.GetProperty("Name").GetValue(results).ToString() == "Sol", "`CelestialObjectController`'s `RenameObject` action did not update the `Name` property of the matching `CelestialObject` in `_context.CelestialObject` with the `string` provided in the parameter (Don't forget to call `SaveChanges` after updating it!).");
         }
 
         [Fact(DisplayName = "Create Delete Action @create-delete-action")]
@@ -195,7 +195,7 @@ namespace StarChartTests
             var okResults = method.Invoke(celestialController, new object[] { 1 }) as NoContentResult;
             Assert.True(okResults != null, "`CelestialObjectController`'s `Delete` action did not return a `NoContent` result.");
             var results = context.Find(model, 1);
-            Assert.True(results == null, "`CelestialObjectController`'s `Delete` action did not remove the matching `CelestialObject` in `_context.CelestialObjects` (Don't forget to call `SaveChanges` after updating it!).");
+            Assert.True(results == null, "`CelestialObjectController`'s `Delete` action did not remove the matching `CelestialObject` in `_context.CelestialObject` (Don't forget to call `SaveChanges` after updating it!).");
         }
     }
 }
